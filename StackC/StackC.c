@@ -9,9 +9,9 @@
 
 #include "StackC.h"
 
-#define ALLOC_SIZE 4
+#define ALLOC_SIZE 10
 
-void StackNew(stackC *s,int typeSize) {
+void stackConstruct(stackC *s,int typeSize) {
 
     assert (typeSize > 0);
     s->elemSize = typeSize;
@@ -21,33 +21,33 @@ void StackNew(stackC *s,int typeSize) {
     assert(s->elements!= NULL);
 }
 
-void StackDispose (stackC *s) {
-    free (s->elements);
+void stackDestruct (stackC *stackObj) {
+    free (stackObj->elements);
 }
 
-bool StackEmpty (const stackC *s) {
-    return s->realLength == 0;
+bool isStackEmpty (const stackC *stackObj) {
+    return stackObj->realLength == 0;
 }
 
-void StackPush(stackC *s, const void* elemAddr) {
+void stackPush(stackC *stackObj, const void* elemAddr) {
 
     void *destAddr;
-    if(s->realLength == s->allocLength){
-        s->allocLength *= 2;
-        s->elements = realloc(s->elements, s->realLength * s->elemSize);
-        assert(s->elements!= NULL);
+    if(stackObj->realLength == stackObj->allocLength){
+        stackObj->allocLength = stackObj->allocLength * 2;
+        stackObj->elements = realloc(stackObj->elements, (stackObj->realLength * stackObj->elemSize));
+        assert(stackObj->elements!= NULL);
     }
-    destAddr = (char *)s->elements + (s->realLength * s->elemSize);
-    memcpy (destAddr, elemAddr, s->elemSize);
-    s->realLength++;
+    destAddr = (char *)stackObj->elements + (stackObj->realLength * stackObj->elemSize);
+    memcpy (destAddr, elemAddr, stackObj->elemSize);
+    stackObj->realLength++;
 }
 
-void StackPop(stackC *s, void *elemAddr) {
+void stackPop(stackC *stackObj, void *elemAddr) {
     const void *sourceAddr;
-    assert (!StackEmpty(s));
-    s->realLength--;
-    sourceAddr = (const char *) s->elements + s->realLength * s->elemSize;
-    memcpy (elemAddr, sourceAddr, s->elemSize);
+    assert (!isStackEmpty(stackObj));
+    stackObj->realLength--;
+    sourceAddr = (const char *) stackObj->elements + stackObj->realLength * stackObj->elemSize;
+    memcpy (elemAddr, sourceAddr, stackObj->elemSize);
     
 }
 

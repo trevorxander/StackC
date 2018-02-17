@@ -22,11 +22,11 @@ typedef struct {
 }stackC;
 
 
-void StackNew(stackC *s, int typeSize);
-void StackDispose(stackC *s);
-bool StackEmpty(const stackC *s);
-void StackPush(stackC *s, const void *elemAddr);
-void StackPop(stackC*s, void *elemAddr);
+void stackConstruct (stackC *stackObj, int typeSize);
+void stackDestruct (stackC *stackObj);
+bool isStackEmpty (const stackC *stackObj);
+void stackPush (stackC *stackObj, const void *elemAddr);
+void stackPop (stackC *stackObj, void *elemAddr);
 
 
 #endif /* StackC_h */

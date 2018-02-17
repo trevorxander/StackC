@@ -9,20 +9,26 @@
 #include <stdio.h>
 #include "StackC.h"
 
+
+
 int main (){
     
-    
+    int const TEST_SIZE = 15;
     stackC test;
-    StackNew( &test, sizeof(int));
-    int testInput = 100;
-    StackPush(&test, &testInput);
+    stackConstruct( &test, sizeof(int));
     
-    int testResult = -1;
-    StackPop(&test, &testResult);
-    StackDispose(&test);
+    for (int testInput = 1; testInput <= TEST_SIZE; testInput++){
+        stackPush(&test, &testInput);
+    }
+   
+    int testResult;
+    for (int iterator = 0; iterator < TEST_SIZE; iterator++){
+        stackPop(&test, &testResult);
+        printf("%d\n",testResult);
+    }
     
+    stackDestruct(&test);
     
-    printf("%d\n",testResult);
-    
+    return 0;
 }
 
