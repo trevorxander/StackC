@@ -7,9 +7,22 @@
 //
 
 #include <stdio.h>
+#include "StackC.h"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
-    return 0;
+int main (){
+    
+    
+    stackC test;
+    StackNew( &test, sizeof(int));
+    int testInput = 100;
+    StackPush(&test, &testInput);
+    
+    int testResult = -1;
+    StackPop(&test, &testResult);
+    StackDispose(&test);
+    
+    
+    printf("%d\n",testResult);
+    
 }
+
