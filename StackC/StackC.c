@@ -3,21 +3,21 @@
 //  StackC
 //
 //  Created by Trevor Xander on 2/17/17.
-//  Copyright © 2018 Trevor Xander. All rights reserved.
+//  
 //
 
 
 #include "StackC.h"
 
-#define kInitialAlocationSize 4
+#define ALLOC_SIZE 4
 
 void StackNew(stackC *s,int typeSize) {
 
     assert (typeSize > 0);
     s->elemSize = typeSize;
     s->realLength = 0;
-    s->allocLength = kInitialAlocationSize;
-    s->elements = malloc (kInitialAlocationSize * typeSize);
+    s->allocLength = ALLOC_SIZE;
+    s->elements = malloc (ALLOC_SIZE * typeSize);
     assert(s->elements!= NULL);
 }
 

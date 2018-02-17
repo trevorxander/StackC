@@ -2,8 +2,8 @@
 //  main.c
 //  StackC
 //
-//  Created by Trevor Xander on 2/17/18.
-//  Copyright © 2018 Trevor Xander. All rights reserved.
+//  Created by Trevor Xander on 2/17/17.
+//  
 //
 
 #include <stdio.h>
