@@ -9,7 +9,7 @@
 
 #include "StackC.h"
 
-#define ALLOC_SIZE 10
+#define ALLOC_SIZE 4
 
 void stackConstruct(stackC *s,int typeSize) {
 
@@ -34,7 +34,11 @@ void stackPush(stackC *stackObj, const void* elemAddr) {
     void *destAddr;
     if(stackObj->realLength == stackObj->allocLength){
         stackObj->allocLength = stackObj->allocLength * 2;
-        stackObj->elements = realloc(stackObj->elements, (stackObj->realLength * stackObj->elemSize));
+        
+        void *newAlloc = malloc(stackObj->allocLength * stackObj->elemSize);
+        memcpy(newAlloc, stackObj->elements, (stackObj->elemSize * stackObj->realLength) );
+        free(stackObj->elements);
+        stackObj->elements = newAlloc;
         assert(stackObj->elements!= NULL);
     }
     destAddr = (char *)stackObj->elements + (stackObj->realLength * stackObj->elemSize);

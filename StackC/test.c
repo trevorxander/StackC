@@ -1,5 +1,5 @@
 //
-//  main.c
+//  test.c
 //  StackC
 //
 //  Created by Trevor Xander on 2/17/17.
@@ -13,7 +13,7 @@
 
 int main (){
     
-    int const TEST_SIZE = 15;
+    int const TEST_SIZE = 10000;
     stackC test;
     stackConstruct( &test, sizeof(int));
     
