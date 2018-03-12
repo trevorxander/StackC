@@ -1,5 +1,5 @@
 //
-//  main.c
+//  StackC.c
 //  StackC
 //
 //  Created by Trevor Xander on 2/17/17.
