@@ -31,4 +31,5 @@ If the output produces numbers 10000 to 1 the stack is functional
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU Affero General Public License - see the [LICENSE.md](LICENSE.md) file for details
+
